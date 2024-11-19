@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoMdEye,IoIosEyeOff } from "react-icons/io";
-import style from "./input.module.scss"
+import style from "./input.module.scss";
+import { Context } from "../Login";
 interface inputProps{
     label:string;
     type:'text'|"number"|"password";
     name:string;
+    set:string;
     title?:string;
     placeholder?:string;
 }
-const Input:React.FC<inputProps> = ({label,type,name,title,placeholder}) =>{
+const Input:React.FC<inputProps> = ({label,type,name,title,placeholder,set}) =>{
     const [revelar,setRevelar] = useState<boolean>(false)
-
+    const context = useContext(Context);
     
 
     return (
@@ -22,19 +24,19 @@ const Input:React.FC<inputProps> = ({label,type,name,title,placeholder}) =>{
                 
                 (
                     <>
-                        <input type="text" title={title} placeholder={placeholder} name={name} id = {name}/>
-                        <button onClick={() => {setRevelar(false)}} title="eye open"><IoMdEye/></button>
+                        <input type="text" title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${set}`](e.target.value)}}/>
+                        <button onClick={() => {setRevelar(false)}} title="eye open" type="button"><IoMdEye/></button>
                     </>
                 ):(
                     <>
-                        <input type="password" title={title} placeholder={placeholder} name={name} id = {name}/>
-                        <button onClick={() => {setRevelar(true)} }title="eye close"><IoIosEyeOff/></button>
+                        <input type="password" title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${set}`](e.target.value)}} />
+                        <button onClick={() => {setRevelar(true)} }title="eye close" type="button"><IoIosEyeOff/></button>
                     </>
                 )}
                 
             </div>
         ):(
-            <input type={type} title={title} placeholder={placeholder} name={name} id = {name}/>
+            <input type={type} title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${name}`](e.target.value)}}/>
         )}
     </div>
     )
