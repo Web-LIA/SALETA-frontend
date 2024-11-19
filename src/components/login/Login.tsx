@@ -13,9 +13,13 @@ const Login:React.FC<loginProps> = ({tipo})=>{
         </header>
         <main className={style.login}>  
             <PiUserCircleFill width="450px" height="450px"/>
-            <Input label = "Usuário" type="text" name="user" title="Usuário"/>
-            <Input label = "Senha" type="text" name="password" title="Senha"/>
-            <button>Entrar</button>
+            <form action="" method="post">
+                <div>
+                    <Input label = "Usuário" type="text" name="user" title="Usuário"/>
+                    <Input label = "Senha" type="password" name="password" title="Senha"/>
+                </div>
+                <button type="submit">Entrar</button>
+            </form>
             <a href="/visitante">Visitante?</a>
         </main>
         </>
