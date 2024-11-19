@@ -1,3 +1,11 @@
 .login{
     display: grid;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: "Open-sans";
+    svg{
+        width: 450px;
+        height: 450px;
+    }
 }
