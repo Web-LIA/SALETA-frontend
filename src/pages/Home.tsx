@@ -1,4 +1,6 @@
 import React from 'react'
+import imagemEncontrar from '../assets/home/EncontrarItem.png'
+import imagemGuardar from '../assets/home/GuardarItem.png'
 
 function Home(){
     return (
@@ -9,7 +11,11 @@ function Home(){
                 <p>Encontrar Item</p>
             </a>
             <a href="" className='itemHome'>
-                <img src="" alt="GUARDAR" />
+                <img src={imagemEncontrar} alt="GUARDAR" />
+                <p>Guardar Item</p>
+            </a>
+            <a href="" className='itemHome'>
+                <img src={imagemGuardar} alt="ENCONTRAR" />
                 <p>Guardar Item</p>
             </a>
         </div>     
