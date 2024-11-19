@@ -16,7 +16,7 @@ function Home(){
             </a>
             <a href="" className='itemHome'>
                 <img src={imagemGuardar} alt="ENCONTRAR" />
-                <p>Guardar Item</p>
+                <p>Encontrar Item</p>
             </a>
         </div>     
     )
