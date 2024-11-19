@@ -1,8 +1,32 @@
 .home{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: #FFFFFF; 
     .sobre{
         display: none;
     }
-    .itemHome{
+    .guardar{
         background-color: #2F9E41;
+    }
+    .encontrar{
+        background-color: #CD191E;
+    }
+    a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 400px;
+        width: 400px;
+        border-radius: 20%;
+        box-shadow: 10px 10px 5px #00000060;
+        img{
+            height: 250px;
+            width: 250px;
+        }
     }
 }
