@@ -11,7 +11,7 @@ function Home(){
                 <img src={imagemEncontrar} alt="ENCONTRAR" />
                 <p>Encontrar Item</p>
             </a>
-            <a href="" className={themes.guardar}>
+            <a href=""  className={themes.guardar}>
                 <img src={imagemGuardar} alt="GUARDAR" />
                 <p>Guardar Item</p>
             </a>
