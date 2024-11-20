@@ -1,20 +1,28 @@
 import { useContext, useState } from "react";
 import { IoMdEye,IoIosEyeOff } from "react-icons/io";
 import style from "./input.module.scss";
-import { Context } from "../Login";
+import  {ContextLogin} from "../Login";
+import { ContextVisitante } from "../Visitante";
 interface inputProps{
     label:string;
     type:'text'|"number"|"password";
     name:string;
     set:string;
-    url:string;
+    url:"login"|"visitante";
     required?:boolean;
     title?:string;
     placeholder?:string;
 }
 const Input:React.FC<inputProps> = ({label,type,name,title,placeholder,set,required,url}) =>{
-    const [revelar,setRevelar] = useState<boolean>(false)
-    const context = useContext(Context);
+    const [revelar,setRevelar] = useState<boolean>(false);
+    let contexts = {
+        login: useContext(ContextLogin), 
+        visitante:useContext(ContextVisitante)
+    }
+    const context = contexts[url];
+
+
+   
     
 
     return (
@@ -38,7 +46,7 @@ const Input:React.FC<inputProps> = ({label,type,name,title,placeholder,set,requi
                 
             </div>
         ):(
-            <input type={type} title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${name}`](e.target.value)}} required = {required}/>
+            <input type={type} title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${set}`](e.target.value)}} required = {required}/>
         )}
     </div>
     )

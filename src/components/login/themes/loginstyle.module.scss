@@ -1,4 +1,4 @@
-.login{
+.login,.visitante{
     display: grid;
     justify-items: center;
     row-gap: 23px;
@@ -48,4 +48,20 @@
         text-align: center;
         color:#000;
     }
+}
+.visitante{
+    padding-top:23px;
+    form{
+        display: grid;
+        row-gap: 16px;
+        justify-items: center;
+        >div{
+            div{
+              
+    input{
+        font-size: 32px;
+        width: 650px;
+    }
+
+            }}}
 }

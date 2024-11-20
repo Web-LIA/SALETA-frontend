@@ -6,7 +6,7 @@ import Input from "./components/Input";
 import { Route, Routes } from "react-router";
 import Visitante from "./Visitante";
 
-export const Context = React.createContext<any>({
+export const ContextLogin = React.createContext<any>({
     user:'',setUser:()=>{},password:'',setPassword:()=>{}
 });
 const Login:React.FC<loginProps> = ({tipo})=>{
@@ -24,12 +24,12 @@ const Login:React.FC<loginProps> = ({tipo})=>{
                     <form action="" method="post">
                         
                         <div>
-                            <Context.Provider value= {{user,setUser}}>
-                                <Input label = "Usuário" type="text" name="user" title="Usuário" set = "User" url = "../Login"/>
-                            </Context.Provider>
-                            <Context.Provider value= {{password,setPassword}}>
-                                <Input label = "Senha" type="password" name="password" title="Senha" set= "Password" url = "../Login" />
-                            </Context.Provider>
+                            <ContextLogin.Provider value= {{user,setUser}}>
+                                <Input label = "Usuário" type="text" name="user" title="Usuário" set = "User" url = "login"/>
+                            </ContextLogin.Provider>
+                            <ContextLogin.Provider value= {{password,setPassword}}>
+                                <Input label = "Senha" type="password" name="password" title="Senha" set= "Password" url = "login" />
+                            </ContextLogin.Provider>
                         </div>
                         
                         <button type="submit">Entrar</button>
