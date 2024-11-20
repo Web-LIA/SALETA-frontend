@@ -1,15 +1,17 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import * as faceapi from "face-api.js";
 import { FaCheckCircle } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
+import { IoReload } from "react-icons/io5";
 import style from "./fotostyle.module.scss"
+import { ContextVisitante } from "../Visitante";
 
 const CameraFaceDetector: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null); // Referência ao vídeo
   const canvasRef = useRef<HTMLCanvasElement | null>(null); // Referência ao canvas
   const [isCameraReady, setIsCameraReady] = useState(false); // Controle de estado para a câmera
   const [hasFace, setHasFace] = useState<boolean | null>(null); // Resultado da detecção
-  const [photo, setPhoto] = useState<string | null>(null); // Armazena a foto capturada
+  const {photo, setPhoto} = useContext(ContextVisitante); // Armazena a foto capturada
   // Carregar modelos do face-api.js
   const loadModels = async () => {
     const MODEL_URL = "/models"; // Pasta onde os modelos estão armazenados
@@ -107,6 +109,7 @@ const CameraFaceDetector: React.FC = () => {
                     startCamera();
                 }}
                 style={{backgroundColor: "#CD191E"}}
+                type="button"
                 >
                     Tentar Novamente
                 </button>
@@ -136,7 +139,7 @@ const CameraFaceDetector: React.FC = () => {
         <div className={style.botoes}>
         <>
             {hasFace === null
-            ? "..."
+            ? <IoReload/>
             : hasFace
             ? <FaCheckCircle color = "#2F9E41"/> 
             : <IoIosCloseCircle color = "#CD191E"/>
@@ -145,9 +148,9 @@ const CameraFaceDetector: React.FC = () => {
         <button
             onClick={handleCapture}
             style={{ marginTop: "10px", padding: "10px 20px",  backgroundColor: "#2F9E41"}}
-        
+            type="button"
         >
-            Tirar Foto
+            Tirar foto do rosto
         </button>
         </div>
         <canvas ref={canvasRef} style={{ display: "none" }} />

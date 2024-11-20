@@ -25,7 +25,7 @@
                     height: 50px;
                     border:1px solid black;
                     border-radius: 20px;
-                    font-size: 50px;
+                    font-size: 32px;
                     padding:10px;
                 }
             }
@@ -57,11 +57,15 @@
         justify-items: center;
         >div{
             div{
-              
-    input{
-        font-size: 32px;
-        width: 650px;
-    }
+                label{
+                    font-size: 36px;
+                }
+                input{
+                    font-size: 32px;
+                    width: 650px;
+                }
 
-            }}}
+            }
+        }
+    }
 }

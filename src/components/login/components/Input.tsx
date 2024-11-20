@@ -12,8 +12,10 @@ interface inputProps{
     required?:boolean;
     title?:string;
     placeholder?:string;
+    maxLength?:number;
+    value?:number|string;
 }
-const Input:React.FC<inputProps> = ({label,type,name,title,placeholder,set,required,url}) =>{
+const Input:React.FC<inputProps> = ({label,type,name,title,placeholder,set,required,url,maxLength,value}) =>{
     const [revelar,setRevelar] = useState<boolean>(false);
     let contexts = {
         login: useContext(ContextLogin), 
@@ -26,7 +28,7 @@ const Input:React.FC<inputProps> = ({label,type,name,title,placeholder,set,requi
     
 
     return (
-    <div>
+    <div className={style.input}>
         <label htmlFor={name}>{label}</label>
         {type == "password" ? (
             <div className={style.eye} >
@@ -34,19 +36,19 @@ const Input:React.FC<inputProps> = ({label,type,name,title,placeholder,set,requi
                 
                 (
                     <>
-                        <input type="text" title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${set}`](e.target.value)}} required = {required}/>
+                        <input type="text" title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${set}`](e.target.value)}} required = {required}  maxLength = {maxLength} value={value}/>
                         <button onClick={() => {setRevelar(false)}} title="eye open" type="button"><IoMdEye/></button>
                     </>
                 ):(
                     <>
-                        <input type="password" title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${set}`](e.target.value)}} required = {required}/>
+                        <input type="password" title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${set}`](e.target.value)}} required = {required}  maxLength = {maxLength} value={value}/>
                         <button onClick={() => {setRevelar(true)} }title="eye close" type="button"><IoIosEyeOff/></button>
                     </>
                 )}
                 
             </div>
         ):(
-            <input type={type} title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${set}`](e.target.value)}} required = {required}/>
+            <input type={type} title={title} placeholder={placeholder} name={name} id = {name} onChange={e=>{context[`set${set}`](e.target.value)}} required = {required}  maxLength = {maxLength} value={value}/>
         )}
     </div>
     )
