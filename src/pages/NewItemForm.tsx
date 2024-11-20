@@ -1,16 +1,17 @@
 import React from "react";
 import { useState } from "react";
 import api from "../services/api";
+import { Item } from "../types/itemTypes"
 
 function NewItemForm() {
 
-    const [title, setTitle] = useState("");
-    const [color, setColor] = useState("");
-    const [size, setSize] = useState("P");
-    const [description, setDescription] = useState("");
+    const [title, setTitle] = useState<string>("");
+    const [color, setColor] = useState<string>("");
+    const [size, setSize] = useState<string>("P");
+    const [description, setDescription] = useState<string>("");
 
 
-    async function postItem(e) {
+    async function postItem(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         await api.post('/itens', {
             title,

@@ -1,17 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import api from "../services/api";
+import { Item } from "../types/itemTypes"
 
 function Items() {
 
-    const [itemList, setItemList] = useState([]);
+    const [itemList, setItemList] = useState<Item[]>([]);
     useEffect(() => {  
         getItems();
     }, []);
       
     async function getItems() {
         const response = await api.get('/itens');
-        setItemList(response.data)
+        const apiItems: Item[] = response.data;
+        setItemList(apiItems);
     }
 
     return (
