@@ -1,10 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-
+import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home';
-import Login from './components/login/Login';
-import Visitante from './components/login/Visitante';
 
 function App() {
   return (
@@ -13,7 +11,7 @@ function App() {
       <div className='rota'>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/login/*' element = {<Login tipo = "encontrar" />}/>
+          <Route path='/login' element/>
           <Route path='/itens' element/>
           <Route path='/cadastrar-novo-item' element/>
         </Routes>
