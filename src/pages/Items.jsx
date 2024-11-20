@@ -7,7 +7,7 @@ function Items() {
     const [itemList, setItemList] = useState([]);
     useEffect(() => {  
         getItems();
-      }, []);
+    }, []);
       
     async function getItems() {
         const response = await api.get('/itens');
