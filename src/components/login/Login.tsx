@@ -25,10 +25,10 @@ const Login:React.FC<loginProps> = ({tipo})=>{
                         
                         <div>
                             <Context.Provider value= {{user,setUser}}>
-                                <Input label = "Usuário" type="text" name="user" title="Usuário" set = "User"/>
+                                <Input label = "Usuário" type="text" name="user" title="Usuário" set = "User" url = "../Login"/>
                             </Context.Provider>
                             <Context.Provider value= {{password,setPassword}}>
-                                <Input label = "Senha" type="password" name="password" title="Senha" set= "Password"/>
+                                <Input label = "Senha" type="password" name="password" title="Senha" set= "Password" url = "../Login" />
                             </Context.Provider>
                         </div>
                         

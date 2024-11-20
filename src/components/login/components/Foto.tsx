@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import * as faceapi from "face-api.js";
 import { FaCheckCircle } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
+import style from "./fotostyle.module.scss"
 
 const CameraFaceDetector: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null); // Referência ao vídeo
@@ -89,25 +90,32 @@ const CameraFaceDetector: React.FC = () => {
     }
   }, [isCameraReady]);
   return (
-    <div style={{ textAlign: "center" }}>
+    <div className={style.foto} style={{ textAlign: "center" }}>
       {photo ?(
-        <div>
-            <img src={photo} alt="Captura" style={{ maxWidth: "100%" }} />
-            <button
-            onClick={()=>{
-                setPhoto(null);
-                setHasFace(null);
-                setIsCameraReady(false);
-                loadModels();
-                startCamera();
-            }}
-            >
-                Tentar Novamente
-            </button>
-        </div>
+        <>
+            <div className={style.imagem}>
+                <img src={photo} alt="Captura" style={{ maxWidth: "100%" }}/>
+            </div>
+           
+            <div className={style.botoes}>
+                <button
+                onClick={()=>{
+                    setPhoto(null);
+                    setHasFace(null);
+                    setIsCameraReady(false);
+                    loadModels();
+                    startCamera();
+                }}
+                style={{backgroundColor: "#CD191E"}}
+                >
+                    Tentar Novamente
+                </button>
+            </div>
+            
+        </>
       ):(
       <>
-        <div style={{ position: "relative", display: "inline-block" }}>
+        <div style={{ position: "relative", display: "inline-block" }} className={style.imagem}>
             <video
             ref={videoRef}
             autoPlay
@@ -125,6 +133,7 @@ const CameraFaceDetector: React.FC = () => {
             }}
             />
         </div>
+        <div className={style.botoes}>
         <>
             {hasFace === null
             ? "..."
@@ -135,10 +144,12 @@ const CameraFaceDetector: React.FC = () => {
         </>
         <button
             onClick={handleCapture}
-            style={{ marginTop: "10px", padding: "10px 20px" }}
+            style={{ marginTop: "10px", padding: "10px 20px",  backgroundColor: "#2F9E41"}}
+        
         >
             Tirar Foto
         </button>
+        </div>
         <canvas ref={canvasRef} style={{ display: "none" }} />
       </>
     )}
