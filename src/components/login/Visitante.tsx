@@ -1,10 +1,12 @@
-import loginProps from "./login/loginProps";
-import Input from "./login/components/Input";
-import { useState } from "react";
+import loginProps from "./loginProps";
+import Input from "./components/Input";
+import React, { useState } from "react";
+import CameraCapture from "./components/Foto";
 
 export const ContextVisitante = React.createContext<any>({
     user:'',setUser:()=>{},password:'',setPassword:()=>{}
 });
+
 const Visitante:React.FC<loginProps> = (props) =>{
     const [name,setName] = useState<string>("");
     const [email,setEmail] = useState<string>("");
@@ -14,7 +16,8 @@ const Visitante:React.FC<loginProps> = (props) =>{
 
     return (
         <main>
-            <
+            <h1>TESTE</h1>
+            <CameraCapture/>
         </main>
     )
 }
