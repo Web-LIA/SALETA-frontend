@@ -10,10 +10,10 @@
         display: none;
     }
     .guardar{
-        background-color: #2F9E41;
+        background-color: #CD191E;
     }
     .encontrar{
-        background-color: #CD191E;
+        background-color: #2F9E41;
     }
     a{
         display: flex;
@@ -22,11 +22,19 @@
         justify-content: center;
         height: 400px;
         width: 400px;
-        border-radius: 20%;
-        box-shadow: 10px 10px 5px #00000060;
+        border-radius: 15%;
+        box-shadow: 15px 15px 5px #00000060;
+        text-decoration: none;
         img{
             height: 250px;
             width: 250px;
+        }
+        p{
+            -webkit-text-stroke: 1px #000000;
+            font-family: "Open Sans-Bold", Helvetica;
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
         }
     }
 }

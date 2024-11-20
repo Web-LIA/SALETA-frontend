@@ -7,13 +7,13 @@ function Home(){
     return (
         <div className={themes.home}>
             <img src="" alt="?" className={themes.sobre}/>
-            <a href="" className={themes.guardar}>
-                <img src={imagemEncontrar} alt="GUARDAR" />
-                <p>Guardar Item</p>
-            </a>
             <a href="" className={themes.encontrar}>
-                <img src={imagemGuardar} alt="ENCONTRAR" />
+                <img src={imagemEncontrar} alt="ENCONTRAR" />
                 <p>Encontrar Item</p>
+            </a>
+            <a href="" className={themes.guardar}>
+                <img src={imagemGuardar} alt="GUARDAR" />
+                <p>Guardar Item</p>
             </a>
         </div>     
     )
