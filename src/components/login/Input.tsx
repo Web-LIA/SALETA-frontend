@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import { IoMdEye,IoIosEyeOff } from "react-icons/io";
-import style from "./input.module.scss";
-import  {ContextLogin} from "../Login";
-import { ContextVisitante } from "../Visitante";
+import style from "../../themes/input.module.scss";
+import { ContextLogin } from "../../pages/Login";
+import { ContextVisitante } from "../../pages/Visitante";
+
 interface inputProps{
     label:string;
     type:'text'|"number"|"password";
@@ -15,6 +16,7 @@ interface inputProps{
     maxLength?:number;
     value?:number|string;
 }
+
 const Input:React.FC<inputProps> = ({label,type,name,title,placeholder,set,required,url,maxLength,value}) =>{
     const [revelar,setRevelar] = useState<boolean>(false);
     let contexts = {
@@ -22,10 +24,6 @@ const Input:React.FC<inputProps> = ({label,type,name,title,placeholder,set,requi
         visitante:useContext(ContextVisitante)
     }
     const context = contexts[url];
-
-
-   
-    
 
     return (
     <div className={style.input}>

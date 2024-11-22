@@ -1,8 +1,9 @@
-import loginProps from "./loginProps";
-import Input from "./components/Input";
+import loginProps from "../types/loginProps";
+import Input from "../components/login/Input"; 
 import React, { useEffect, useState } from "react";
-import CameraCapture from "./components/Foto";
-import style from "./themes/loginstyle.module.scss"
+import CameraCapture from "../components/login/Foto";
+import style from "../themes/loginstyle.module.scss";
+
 export const ContextVisitante = React.createContext<any>({
     name:'',setName:()=>{},
     email:'',setEmailCheck:()=>{},

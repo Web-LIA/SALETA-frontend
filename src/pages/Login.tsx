@@ -1,14 +1,15 @@
-import React,{ useEffect, useState }  from "react"
-import loginProps from "./loginProps";
-import style from "./themes/loginstyle.module.scss";
+import React,{ useEffect, useState }  from "react";
+import loginProps from "../types/loginProps";
+import style from "../themes/loginstyle.module.scss";
 import { PiUserCircleFill } from "react-icons/pi";
-import Input from "./components/Input";
+import Input from "../components/login/Input";
 import { Route, Routes } from "react-router";
 import Visitante from "./Visitante";
 
 export const ContextLogin = React.createContext<any>({
     user:'',setUser:()=>{},password:'',setPassword:()=>{}
 });
+
 const Login:React.FC<loginProps> = ({tipo})=>{
     const [user,setUser] = useState<string>("");
     const [password,setPassword] = useState<string>("");

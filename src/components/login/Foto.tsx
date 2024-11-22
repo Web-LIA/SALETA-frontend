@@ -3,8 +3,8 @@ import * as faceapi from "face-api.js";
 import { FaCheckCircle } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
 import { IoReload } from "react-icons/io5";
-import style from "./fotostyle.module.scss"
-import { ContextVisitante } from "../Visitante";
+import style from "../../themes/fotostyle.module.scss";
+import { ContextVisitante } from "../../pages/Visitante";
 
 const CameraFaceDetector: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null); // Referência ao vídeo

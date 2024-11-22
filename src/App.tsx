@@ -5,8 +5,8 @@ import './App.css';
 import Home from './pages/Home';
 import Items from './pages/Items';
 import NewItemForm from './pages/NewItemForm';
-import Login from './components/login/Login';
-import Visitante from './components/login/Visitante';
+import Login from './pages/Login';
+import Visitante from './pages/Visitante';
 
 function App() {
   return (
