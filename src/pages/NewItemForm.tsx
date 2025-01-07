@@ -3,9 +3,10 @@ import { useState } from "react";
 import api from "../services/api";
 import { Item } from "../types/itemTypes";
 import themes from "../themes/new-item-form.module.scss";
+import WebCamPhoto from "../components/form/WebCamPhoto"
 
 function NewItemForm() {
-
+    const [photo, setPhoto] = useState<string>("");
     const [title, setTitle] = useState<string>("");
     const [color, setColor] = useState<string>("");
     const [size, setSize] = useState<string>("P");
@@ -18,12 +19,14 @@ function NewItemForm() {
             title,
             color,
             size,
-            description
+            description,
+            photo
         })
     }
 
     return (
         <div className={themes.itemForm}>
+            <WebCamPhoto photo={photo} setPhoto={setPhoto}/>
             <form onSubmit={postItem}>
                 <label htmlFor="title">Título</label>
                 <input 

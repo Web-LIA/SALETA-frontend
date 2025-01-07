@@ -25,6 +25,7 @@ function Items() {
                     <p>{item.size}</p>
                     <p>{item.description}</p>
                     <p>{item.date}</p>
+                    <img src={item.photo} alt="" />
                     <hr />
                 </div>
             ))}
