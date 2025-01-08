@@ -5,6 +5,7 @@ import { PiUserCircleFill } from "react-icons/pi";
 import Input from "../components/login/Input";
 import { Route, Routes } from "react-router";
 import Visitante from "./Visitante";
+import Header from "../components/Header";
 
 export const ContextLogin = React.createContext<any>({
     user:'',setUser:()=>{},password:'',setPassword:()=>{}
@@ -46,6 +47,7 @@ const Login:React.FC<loginProps> = ({tipo})=>{
         <Routes>
             <Route path="/" element =  {
                 <main className={style.login}>  
+                    <Header titulo="LOGIN"/>
                     <PiUserCircleFill width="450px" height="450px"/>
                     <form onSubmit={handleSubmit}>
                         

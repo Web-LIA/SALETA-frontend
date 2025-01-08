@@ -3,6 +3,7 @@ import Input from "../components/login/Input";
 import React, { useEffect, useState } from "react";
 import CameraCapture from "../components/login/Foto";
 import style from "../themes/loginstyle.module.scss";
+import Header from "../components/Header";
 
 export const ContextVisitante = React.createContext<any>({
     name:'',setName:()=>{},
@@ -98,7 +99,7 @@ const Visitante:React.FC<loginProps> = (props) =>{
       };
     return (
         <main className={style.visitante}>
-            
+            <Header titulo="VISITANTE"/>
             <form onSubmit={handleSubmit}>
             <ContextVisitante.Provider value= {{photo, setPhoto}}>
                 <CameraCapture/>
