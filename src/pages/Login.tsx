@@ -43,9 +43,6 @@ const Login:React.FC<loginProps> = ({tipo})=>{
       };
     return (
         <>
-        <header>
-            
-        </header>
         <Routes>
             <Route path="/" element =  {
                 <main className={style.login}>  
