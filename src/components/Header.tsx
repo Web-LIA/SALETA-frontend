@@ -1,4 +1,5 @@
 import React from 'react'
+import themes from '../themes/header.module.scss'
 
 interface HeaderProps{
     titulo:string
@@ -7,7 +8,7 @@ interface HeaderProps{
 function Header(props:HeaderProps){
     return (
         <>
-            <header>
+            <header className={themes.header}>
                 <p>{props.titulo}</p>
             </header>
         </>
