@@ -16,9 +16,19 @@ function Items() {
         setItemList(apiItems);
     }
 
+    const [busca,setBusca] = useState("")
+    const lowerBusca = busca.toLowerCase()
+    const itemListFiltered = itemList.filter((item) => 
+        item.title.toLowerCase().includes(busca.toLowerCase()) ||
+        item.color.toLowerCase().includes(busca.toLowerCase()) ||
+        item.description.toLowerCase().includes(busca.toLowerCase()) ||
+        item.size.toLowerCase().includes(busca.toLowerCase())
+    )
+
     return (
         <>
-            {itemList.map(item => (
+            <input type="text" value={busca} onChange={(e) => {setBusca(e.target.value)}} />
+            {itemListFiltered.map(item => (
                 <div className="itemCard">
                     <p>{item.title}</p>
                     <p>{item.color}</p>

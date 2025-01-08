@@ -7,11 +7,9 @@ interface HeaderProps{
 
 function Header(props:HeaderProps){
     return (
-        <>
-            <header className={themes.header}>
+        <header className={themes.header}>
                 <p>{props.titulo}</p>
-            </header>
-        </>
+        </header>
     )
 }
 
