@@ -1,0 +1,45 @@
+.header{
+    display: flex;
+    height: 100px;
+    width: 100vw;
+    background-color: #2F9E41;
+    align-items: center;
+    justify-content: center;
+    .search{
+        height: 10px;
+        width: calc(100vw - 160px);
+        border:1px solid black;
+        border-radius: 50px;
+        font-size: 32px;
+        padding:20px;
+    }
+}
+.itemMain{
+    display: grid;
+    font-family: "Open Sans";
+    font-weight: bold;
+    justify-content: center;
+    padding-top: 40px;
+    row-gap: 40px;
+    .itemCard{
+        display: flex;
+        width: 700px;
+        border-radius: 20px;
+        background-color: #2f9d41;
+        color: white;
+        img{
+            height: 150px;
+            width: 150px;
+            margin: 5%;
+            border-radius: 20px;
+            align-self: center;
+        }
+        .itemContent{
+            width: 100%;
+            h3{
+                text-align: center;
+                font-size: 36px;
+            }
+        }
+    }
+}

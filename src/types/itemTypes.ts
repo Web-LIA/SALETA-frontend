@@ -5,7 +5,7 @@ export type Item = {
     size: string;
     description: string;
     photo: string;
-    date: string;
+    date: Date;
     found: boolean;
     __v: number;
 }

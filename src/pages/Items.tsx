@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import api from "../services/api";
 import { Item } from "../types/itemTypes"
+import themes from "../themes/items.module.scss"
+import Header from "../components/Header";
 
 function Items() {
 
@@ -21,24 +23,28 @@ function Items() {
     const itemListFiltered = itemList.filter((item) => 
         item.title.toLowerCase().includes(busca.toLowerCase()) ||
         item.color.toLowerCase().includes(busca.toLowerCase()) ||
-        item.description.toLowerCase().includes(busca.toLowerCase()) ||
-        item.size.toLowerCase().includes(busca.toLowerCase())
+        item.description.toLowerCase().includes(busca.toLowerCase())
     )
 
     return (
         <>
-            <input type="text" value={busca} onChange={(e) => {setBusca(e.target.value)}} />
-            {itemListFiltered.map(item => (
-                <div className="itemCard">
-                    <p>{item.title}</p>
-                    <p>{item.color}</p>
-                    <p>{item.size}</p>
-                    <p>{item.description}</p>
-                    <p>{item.date}</p>
-                    <img src={item.photo} alt="" />
-                    <hr />
-                </div>
-            ))}
+            <header className={themes.header}>
+                <input type="text" value={busca} onChange={(e) => {setBusca(e.target.value)}} className={themes.search}/>
+            </header>
+            <main className={themes.itemMain}>
+                {itemListFiltered.map(item => (
+                    <div className={themes.itemCard}>
+                        <img src={item.photo} alt={item.title} />
+                            <div className={themes.itemContent}>
+                                <h3>{item.title}</h3>
+                                <p>{item.description}</p>
+                                <p>Cor: {item.color}</p>
+                                <p>Tam: {item.size}</p>
+                                <p>{item.date.toLocaleString("dd/MM/yyyy")}</p>
+                            </div>
+                    </div>
+                ))}
+            </main>
         </>
     )
 }
