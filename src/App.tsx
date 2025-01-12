@@ -15,8 +15,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/login/*' element = {<Login tipo = "encontrar" />}/>
-          <Route path='/itens' element/>
-          <Route path='/login' element/>
           <Route path='/itens' element={<Items/>}/>
           <Route path='/cadastrar-novo-item' element/>
         </Routes>
