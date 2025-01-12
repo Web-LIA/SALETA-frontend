@@ -38,10 +38,12 @@ function Items() {
                         <img src={item.photo} alt={item.title} />
                             <div className={themes.itemContent}>
                                 <h3>{item.title}</h3>
-                                <p>{item.description}</p>
-                                <p>Cor: {item.color}</p>
-                                <p>Tam: {item.size}</p>
-                                <p>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
+                                <p className={themes.itemDesc}>{item.description}</p>
+                                <div className={themes.itemFeats}>
+                                    <p>Cor: {item.color}</p>
+                                    <p>Tam: {item.size}</p>
+                                </div>
+                                <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
                             </div>
                     </div>
                 ))}
