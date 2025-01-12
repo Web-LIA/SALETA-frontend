@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import api from "../services/api";
 import { Item } from "../types/itemTypes"
+import { format } from "date-fns"
 import themes from "../themes/items.module.scss"
 import Header from "../components/Header";
 
@@ -24,7 +25,7 @@ function Items() {
         item.title.toLowerCase().includes(busca.toLowerCase()) ||
         item.color.toLowerCase().includes(busca.toLowerCase()) ||
         item.description.toLowerCase().includes(busca.toLowerCase())
-    )
+    ) 
 
     return (
         <>
@@ -40,7 +41,7 @@ function Items() {
                                 <p>{item.description}</p>
                                 <p>Cor: {item.color}</p>
                                 <p>Tam: {item.size}</p>
-                                <p>{item.date.toLocaleString("dd/MM/yyyy")}</p>
+                                <p>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
                             </div>
                     </div>
                 ))}
