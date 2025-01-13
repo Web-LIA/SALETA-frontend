@@ -1,6 +1,13 @@
 .itemForm {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    justify-self: center;
     form{
+        padding-top: 20px;
+        padding-bottom: 20px;
         display: grid;
+        width: 100%;
         row-gap: 16px;
         justify-items: center;
         font-family: "Open Sans";
@@ -15,7 +22,7 @@
             border: 1px solid black;
             border-radius: 20px;
             font-size: 30px;
-            padding-bottom: 10px;
+            padding: 10px;
         }
         .itemSize {
             width: 600px;
@@ -56,5 +63,26 @@
             text-align: center;
             border-radius: 20px;
         }
+        .camera,.foto{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            button{
+                width: 300px;
+                margin: 16px;
+            }
+            img,video{
+                width: 350px;
+                height: 350px;
+                object-fit: fill;
+            }
+        }
+        .foto{
+            button{
+                background-color: #CD191E;
+            }
+        }
     }
+    
 }
