@@ -7,6 +7,7 @@ import Items from './pages/Items';
 import NewItemForm from './pages/NewItemForm';
 import Login from './pages/Login';
 import Visitante from './pages/Visitante';
+import Door from './pages/Door';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/login/*' element = {<Login tipo = "guardar" />}/>
           <Route path='/itens' element={<Items/>}/>
           <Route path='/cadastrar-novo-item' element={<NewItemForm/>}/>
+          <Route path='/abrir-porta' element={<Door/>}/>
         </Routes>
       </div>
     </BrowserRouter>
