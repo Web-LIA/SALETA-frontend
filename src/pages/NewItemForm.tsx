@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 import api from "../services/api";
 import { Item } from "../types/itemTypes";
 import themes from "../themes/new-item-form.module.scss";
@@ -12,6 +13,7 @@ function NewItemForm() {
     const [color, setColor] = useState<string>("");
     const [size, setSize] = useState<string>("P");
     const [description, setDescription] = useState<string>("");
+    let navigate = useNavigate();
 
 
     async function postItem(e: React.FormEvent<HTMLFormElement>) {
@@ -23,6 +25,7 @@ function NewItemForm() {
             description,
             photo
         })
+        navigate('/sessao')
     }
 
     return (

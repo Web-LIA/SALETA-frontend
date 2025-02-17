@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import api from "../services/api";
 import { Item } from "../types/itemTypes"
 import { format } from "date-fns"
@@ -7,7 +8,7 @@ import themes from "../themes/items.module.scss"
 import Header from "../components/Header";
 
 function Items() {
-
+    let navigate = useNavigate();
     const [itemList, setItemList] = useState<Item[]>([]);
     useEffect(() => {  
         getItems();
@@ -27,6 +28,10 @@ function Items() {
         item.description.toLowerCase().includes(busca.toLowerCase())
     ) 
 
+    function start_session() {
+        navigate('/sessao')   
+    }
+
     return (
         <>
             <header className={themes.header}>
@@ -45,6 +50,7 @@ function Items() {
                                 </div>
                                 <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
                             </div>
+                            <button onClick={start_session}>Recuperar Item</button>
                     </div>
                 ))}
             </main>
