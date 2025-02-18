@@ -40,8 +40,8 @@ const Login:React.FC<loginProps> = ({tipo})=>{
             console.log("LOGADO")
             
             switch(tipo){
-                case "encontrar":
-                    navigate("/")
+                case "buscar":
+                    navigate("/sessao")
                     break;
                 case "guardar":
                     navigate("/cadastrar-novo-item")

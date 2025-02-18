@@ -29,7 +29,7 @@ function Items() {
     ) 
 
     function start_session() {
-        navigate('/sessao')   
+        navigate('/login/buscar')   
     }
 
     return (

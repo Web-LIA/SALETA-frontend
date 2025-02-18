@@ -17,7 +17,8 @@ function App() {
       <div className='rota'>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/login/*' element = {<Login tipo = "guardar" />}/>
+          <Route path='/login/guardar' element = {<Login tipo = "guardar" />}/>
+          <Route path='/login/buscar' element = {<Login tipo = "buscar" />}/>
           <Route path='/itens' element={<Items/>}/>
           <Route path='/cadastrar-novo-item' element={<NewItemForm/>}/>
           <Route path='/abrir-porta' element={<Door/>}/>

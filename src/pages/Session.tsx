@@ -7,9 +7,11 @@ import themes from "../themes/new-item-form.module.scss";
 import Header from "../components/Header";
 
 function Session() {
+    let closed:boolean = true;
     let navigate = useNavigate()
 
     async function abrir_porta(){
+        console.log("abriu porta")
         const response = await api.post('/open-door', {
             requisicao: "ON"
         })
@@ -34,8 +36,9 @@ function Session() {
         }
     }
     
-    useEffect(() => {  
-        abrir_porta();
+    useEffect(() => {
+        if (closed) abrir_porta();
+        closed = false;
     }, []);
 
     function end_session() {

@@ -1,4 +1,4 @@
 export default interface loginProps {
-    tipo:"encontrar"|"guardar";
+    tipo:"buscar"|"guardar";
 
 }
