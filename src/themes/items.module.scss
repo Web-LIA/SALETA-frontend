@@ -18,11 +18,13 @@
     display: grid;
     font-family: "Open Sans";
     justify-content: center;
+    justify-self: center;
+    width: 90vw;
     padding-top: 40px;
     row-gap: 40px;
     .itemCard{
         display: flex;
-        width: 700px;
+        width: 100%;
         border-radius: 20px;
         background-color: #2f9d41;
         color: white;
@@ -61,5 +63,39 @@
 }
 
 @media screen and (max-width: 600px){
-    
+    .itemMain{
+        .itemCard{
+            font-size: 10px;
+            img{
+                height: 150px;
+                width: 150px;
+                margin: 5%;
+                border-radius: 20px;
+                align-self: center;
+            }
+            .itemContent{
+                width: 100%;
+                padding-right: 25px;
+                h3{
+                    text-align: center;
+                    font-size: 36px;
+                    font-weight: bold;
+                }
+                .itemDesc{
+                    height: 50%
+                }
+                .itemFeats{
+                    display: inline-flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    font-weight: bold;
+                }
+                .itemDate{
+                    text-align: end;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
 }
