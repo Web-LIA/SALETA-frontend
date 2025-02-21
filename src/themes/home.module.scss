@@ -1,5 +1,5 @@
 .home{
-    height: calc(100vh - 100px);
+    height: calc(100vh - 200px);
     width: 100vw;
     display: flex;
     align-items: center;
@@ -41,5 +41,38 @@
     a:active{
         transform: translate(10px,10px);
         box-shadow: 5px 5px 5px #00000090;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .home{
+        a{
+            height:250px;
+            width: 250px;
+            img{
+                height: 160px;
+                width: 160px;
+            }
+            p{
+                font-size: 26px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 3000px){
+    .home{
+        flex-direction: row;
+        a{
+            height:800px;
+            width: 800px;
+            img{
+                height: 600px;
+                width: 600px;
+            }
+            p{
+                font-size: 64px;
+            }
+        }
     }
 }

@@ -43,7 +43,8 @@ function Items() {
             <main className={themes.itemMain}>
                 {itemListFiltered.map(item => (
                     <div className={themes.itemCard}>
-                        <img src={item.photo} alt={item.title} />
+                        <div className={themes.itemInfo}>
+                            <img src={item.photo} alt={item.title} />
                             <div className={themes.itemContent}>
                                 <h3>{item.title}</h3>
                                 <p className={themes.itemDesc}>{item.description}</p>
@@ -53,7 +54,8 @@ function Items() {
                                 </div>
                                 <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
                             </div>
-                            <button onClick={() => {start_session(item._id)}}>Recuperar Item</button>
+                        </div>
+                        <button onClick={() => {start_session(item._id)}} className={themes.itemButton}>Recuperar Item</button>
                     </div>
                 ))}
             </main>
