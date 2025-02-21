@@ -1,6 +1,6 @@
 .header{
     display: flex;
-    height: 10vh;
+    height: 100px;
     width: 100vw;
     background-color: #2F9E41;
     align-items: center;
@@ -10,8 +10,8 @@
         width: 80vw;
         border:0.2vh solid black;
         border-radius: 50px;
-        font-size: 3vh;
-        padding:2vh;
+        font-size: 20px;
+        padding:20px;
     }
 }
 .itemMain{
