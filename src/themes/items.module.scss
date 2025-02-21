@@ -130,6 +130,22 @@
 }
 
 @media screen and (min-width: 1500px){
+    .header{
+        display: flex;
+        height: 250px;
+        width: 100vw;
+        background-color: #2F9E41;
+        align-items: center;
+        justify-content: center;
+        .search{
+            height: 100px;
+            width: 1400px;
+            border:0.2vh solid black;
+            border-radius: 50px;
+            font-size: 20px;
+            padding:20px;
+        }
+    }
     .itemMain{
         width: 100vw;
         .itemCard{
