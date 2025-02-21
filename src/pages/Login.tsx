@@ -1,5 +1,5 @@
 import React,{ useEffect, useState }  from "react"
-import loginProps from "../types/loginProps";
+
 import style from "../themes/loginstyle.module.scss";
 import { PiUserCircleFill } from "react-icons/pi";
 import Input from "../components/login/Input";
@@ -7,11 +7,12 @@ import { Route, Routes, useNavigate } from "react-router";
 import Visitante from "./Visitante";
 import api from "../services/api";
 import Header from "../components/Header";
+import sessionProps from "../types/loginProps";
 
 export const ContextLogin = React.createContext<any>({
     login:'',setLogin:()=>{},password:'',setPassword:()=>{}
 });
-const Login:React.FC<loginProps> = ({tipo})=>{ 
+const Login:React.FC<sessionProps> = ({tipo})=>{ 
 
     const [login,setLogin] = useState<string>("");
     const [password,setPassword] = useState<string>("");
@@ -41,7 +42,7 @@ const Login:React.FC<loginProps> = ({tipo})=>{
             
             switch(tipo){
                 case "buscar":
-                    navigate("/sessao")
+                    navigate("/sessao/buscar")
                     break;
                 case "guardar":
                     navigate("/cadastrar-novo-item")

@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import api from "../services/api";
 import { Item } from "../types/itemTypes";
 import themes from "../themes/new-item-form.module.scss";
 import Header from "../components/Header";
+import { ContextItens } from "../App";
+import sessionProps from "../types/loginProps";
 
-function Session() {
+const Session:React.FC<sessionProps> = ({tipo}) => {
     let closed:boolean = true;
     let navigate = useNavigate()
+    let contextId = useContext(ContextItens);
 
     async function abrir_porta(){
         console.log("abriu porta")
@@ -41,9 +44,10 @@ function Session() {
         closed = false;
     }, []);
 
-    function end_session() {
+    async function end_session() {
         fechar_porta()
-        navigate('/')
+        if(tipo == "buscar")await api.delete(`/itens/${contextId["itemId"]}`).then( contextId["setItemId"](""));
+        navigate('/');
     }
     
     return (

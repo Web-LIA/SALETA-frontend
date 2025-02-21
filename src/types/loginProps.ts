@@ -1,4 +1,4 @@
-export default interface loginProps {
+export default interface sessionProps {
     tipo:"buscar"|"guardar";
 
 }

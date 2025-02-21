@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import api from "../services/api";
@@ -6,8 +6,10 @@ import { Item } from "../types/itemTypes"
 import { format } from "date-fns"
 import themes from "../themes/items.module.scss"
 import Header from "../components/Header";
+import { ContextItens } from "../App";
 
 function Items() {
+    let contextItem = useContext(ContextItens);
     let navigate = useNavigate();
     const [itemList, setItemList] = useState<Item[]>([]);
     useEffect(() => {  
@@ -28,7 +30,8 @@ function Items() {
         item.description.toLowerCase().includes(busca.toLowerCase())
     ) 
 
-    function start_session() {
+    function start_session(id:string) {
+        contextItem["setItemId"](id)
         navigate('/login/buscar')   
     }
 
@@ -50,7 +53,7 @@ function Items() {
                                 </div>
                                 <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
                             </div>
-                            <button onClick={start_session}>Recuperar Item</button>
+                            <button onClick={() => {start_session(item._id)}}>Recuperar Item</button>
                     </div>
                 ))}
             </main>

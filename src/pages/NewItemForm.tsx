@@ -25,7 +25,7 @@ function NewItemForm() {
             description,
             photo
         })
-        navigate('/sessao')
+        navigate('/sessao/guardar')
     }
 
     return (
