@@ -15,9 +15,7 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
 
     async function abrir_porta(){
         console.log("abriu porta")
-        const response = await api.post('/open-door', {
-            requisicao: "ON"
-        })
+        const response = await api.post('/porta/abrir', {})
         if(response.data.error){
             alert("NÃO CONSEGUI ABRIR A PORTA");
             return false;
@@ -27,9 +25,7 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
         }
     }
     async function fechar_porta() {
-        const response = await api.post('/open-door', {
-            requisicao: "OFF"
-        })
+        const response = await api.post('/porta/fechar', {})
         if(response.data.error){
             alert("NÃO CONSEGUI FECHAR PORTA");
             return false;
