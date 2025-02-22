@@ -2,9 +2,7 @@ import api from "../services/api";
 
 export default function Door(){
     async function abrir(){
-        const response = await api.post('/open-door', {
-            requisicao: "ON"
-        })
+        const response = await api.post('/porta/abrir', {});
         
         if(response.data.error){
             alert("NÃO CONSEGUI ABRIR A PORTA");
@@ -15,9 +13,7 @@ export default function Door(){
         }
     }
     async function fechar() {
-        const response = await api.post('/open-door', {
-            requisicao: "OFF"
-        })
+        const response = await api.post('/porta/fechar', {})
         
         if(response.data.error){
             alert("NÃO CONSEGUI FECHAR PORTA");
