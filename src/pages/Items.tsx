@@ -41,7 +41,7 @@ function Items() {
                 <input type="text" value={busca} onChange={(e) => {setBusca(e.target.value)}} className={themes.search}/>
             </header>
             <main className={themes.itemMain}>
-                {itemListFiltered.map(item => (
+                {itemListFiltered.filter(item => !item.found).map(item => (
                     <div className={themes.itemCard}>
                         <div className={themes.itemInfo}>
                             <img src={item.photo} alt={item.title} />

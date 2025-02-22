@@ -44,7 +44,9 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
 
     async function end_session() {
         await fechar_porta();
-        if(tipo == "buscar")await api.delete(`/itens/${contextIds["itemId"]}`).then( contextIds["setItemId"](""));
+        if(tipo == "buscar") {
+            await api.post(`/itens/found/${contextIds["itemId"]}`).then( contextIds["setItemId"](""));
+        } 
         navigate('/');
     }
     
