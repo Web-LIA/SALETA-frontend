@@ -5,17 +5,18 @@ import api from "../services/api";
 import { Item } from "../types/itemTypes";
 import themes from "../themes/new-item-form.module.scss";
 import Header from "../components/Header";
-import { ContextItens } from "../App";
+import { ContextIds } from "../App";
 import sessionProps from "../types/loginProps";
 
 const Session:React.FC<sessionProps> = ({tipo}) => {
     let closed:boolean = true;
     let navigate = useNavigate()
-    let contextId = useContext(ContextItens);
+    let contextIds = useContext(ContextIds);
 
     async function abrir_porta(){
         console.log("abriu porta")
         const response = await api.post('/porta/abrir', {})
+        await api.post(`/sessao/${contextIds["type"]}/${contextIds["userId"]}/${contextIds["itemId"]}` );
         if(response.data.error){
             alert("NÃO CONSEGUI ABRIR A PORTA");
             return false;
@@ -23,6 +24,7 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
             alert("Tranca Liberada, deposite/obtenha o item e volte para encerrar a sessão");
             return response.data
         }
+        
     }
     async function fechar_porta() {
         const response = await api.post('/porta/fechar', {})
@@ -42,7 +44,7 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
 
     async function end_session() {
         await fechar_porta();
-        if(tipo == "buscar")await api.delete(`/itens/${contextId["itemId"]}`).then( contextId["setItemId"](""));
+        if(tipo == "buscar")await api.delete(`/itens/${contextIds["itemId"]}`).then( contextIds["setItemId"](""));
         navigate('/');
     }
     

@@ -6,10 +6,10 @@ import { Item } from "../types/itemTypes"
 import { format } from "date-fns"
 import themes from "../themes/items.module.scss"
 import Header from "../components/Header";
-import { ContextItens } from "../App";
+import { ContextIds } from "../App";
 
 function Items() {
-    let contextItem = useContext(ContextItens);
+    let contextItem = useContext(ContextIds);
     let navigate = useNavigate();
     const [itemList, setItemList] = useState<Item[]>([]);
     useEffect(() => {  

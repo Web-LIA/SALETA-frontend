@@ -10,16 +10,21 @@ import Visitante from './pages/Visitante';
 import Door from './pages/Door';
 import Session from './pages/Session';
 
-export const ContextItens = React.createContext<any>({
-  itemId:'',setItemId: () => {}
+export const ContextIds = React.createContext<any>({
+  itemId:'',setItemId: () => {},
+  userId:'',setUserId: () => {},
+  type:'', setType: () => {}
+
 });
 function App() {
   const [itemId, setItemId] = useState<string>("");
+  const [userId, setUserId] = useState<string>("");
+  const [type, setType] = useState<string>("");
   return (
     <BrowserRouter>
       {/* <Header/> */}
       <div className='rota'>
-      <ContextItens.Provider value= {{itemId,setItemId}}>
+      <ContextIds.Provider value= {{itemId,setItemId,userId,setUserId,type,setType}}>
         <Routes>
           <Route path='/' element={<Home/>}/>
 
@@ -34,7 +39,7 @@ function App() {
           
           
         </Routes>
-        </ContextItens.Provider>
+        </ContextIds.Provider>
       </div>
     </BrowserRouter>
   );

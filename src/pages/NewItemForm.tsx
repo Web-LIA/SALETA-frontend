@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import api from "../services/api";
@@ -6,6 +6,7 @@ import { Item } from "../types/itemTypes";
 import themes from "../themes/new-item-form.module.scss";
 import WebCamPhoto from "../components/form/WebCamPhoto"
 import Header from "../components/Header";
+import { ContextIds } from "../App";
 
 function NewItemForm() {
     const [photo, setPhoto] = useState<string>("");
@@ -14,17 +15,18 @@ function NewItemForm() {
     const [size, setSize] = useState<string>("P");
     const [description, setDescription] = useState<string>("");
     let navigate = useNavigate();
-
+    const contextIds = useContext(ContextIds);
 
     async function postItem(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        await api.post('/itens', {
+        let resposta:any = await api.post('/itens', {
             title,
             color,
             size,
             description,
             photo
-        })
+        });
+        contextIds["setItemId"](resposta.data._id);
         navigate('/sessao/guardar')
     }
 

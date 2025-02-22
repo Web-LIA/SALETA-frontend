@@ -1,4 +1,4 @@
-import React,{ useEffect, useState }  from "react"
+import React,{ useContext, useEffect, useState }  from "react"
 
 import style from "../themes/loginstyle.module.scss";
 import { PiUserCircleFill } from "react-icons/pi";
@@ -8,6 +8,7 @@ import Visitante from "./Visitante";
 import api from "../services/api";
 import Header from "../components/Header";
 import sessionProps from "../types/loginProps";
+import { ContextIds } from "../App";
 
 export const ContextLogin = React.createContext<any>({
     login:'',setLogin:()=>{},password:'',setPassword:()=>{}
@@ -16,18 +17,20 @@ const Login:React.FC<sessionProps> = ({tipo})=>{
 
     const [login,setLogin] = useState<string>("");
     const [password,setPassword] = useState<string>("");
+    const contextIds = useContext(ContextIds);
     let navigate = useNavigate();
     async function postUsers() {
         const response = await api.post('/login', {
             login,
             password
         })
-        
+        contextIds["setUserId"](response.data[0]._id);
         if(response.data.error){
             alert(response.data.error);
             return false;
         }else{
             alert("Logado com sucesso!");
+            
             return response.data
         }
         
@@ -42,9 +45,12 @@ const Login:React.FC<sessionProps> = ({tipo})=>{
             
             switch(tipo){
                 case "buscar":
-                    navigate("/sessao/buscar")
+                    contextIds["setType"]("buscar");
+                    navigate("/sessao/buscar");
+
                     break;
                 case "guardar":
+                    contextIds["setType"]("guardar");
                     navigate("/cadastrar-novo-item")
                     break;
                 default:
