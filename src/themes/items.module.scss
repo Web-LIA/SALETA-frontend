@@ -6,12 +6,25 @@
     align-items: center;
     justify-content: center;
     .search{
-        height: 10%;
-        width: 80vw;
+        height: 10px;
+        width: 100%;
         border:0.2vh solid black;
         border-radius: 50px;
-        font-size: 20px;
-        padding:20px;
+        font-size: 24px;
+        padding:20px 10px 20px 10px;
+        margin-right: 100px;
+    }
+    a{
+        display: flex;
+        left: 0;
+        height: 100px;
+        aspect-ratio: 1/1;
+        align-items: center;
+        justify-content: center;
+        svg{
+            height: 70%;
+            width: 70%;
+        }
     }
 }
 .itemMain{
@@ -36,7 +49,7 @@
             height: 80%;
             img{
                 width: 30%;
-                aspect-ratio: 1 / 1;
+                aspect-ratio: 1/1;
                 margin: 3%;
                 border-radius: 20px;
                 align-self: center;
@@ -87,6 +100,18 @@
 }
 
 @media screen and (max-width: 700px){
+    .header{
+        height: 70px;
+        .search{
+            height: 10px;
+            font-size: 16px;
+            padding: 10px 5px 10px 5px;
+            margin-right: 70px;
+        }
+        a{
+            height: 70px;
+        }
+    }
     .itemMain{
         width: 90vw;
         row-gap: 20px;

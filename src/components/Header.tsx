@@ -1,4 +1,6 @@
 import React from 'react'
+import { IoHomeSharp } from "react-icons/io5";
+import {useNavigate} from "react-router-dom";
 import themes from '../themes/header.module.scss'
 
 interface HeaderProps{
@@ -6,8 +8,15 @@ interface HeaderProps{
 }
 
 function Header(props:HeaderProps){
+    let navigate = useNavigate();
+
+    function goHome(){
+        navigate('/')
+    }
+
     return (
         <header className={themes.header}>
+                <a onClick={goHome}><IoHomeSharp /></a>
                 <p>{props.titulo}</p>
         </header>
     )
