@@ -1,5 +1,5 @@
 .home{
-    height: calc(100vh - 200px);
+    height: calc(100vh - 100px);
     width: 100vw;
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@
         }
         p{
             -webkit-text-stroke: 1px #000000;
-            font-family: "Open Sans-Bold", Helvetica;
+            font-family: "Open Sans";
             color: white;
             font-size: 48px;
             font-weight: 700;
@@ -46,12 +46,13 @@
 
 @media screen and (max-width: 700px){
     .home{
+        height: calc(100vh - 150px);
         a{
-            height:250px;
-            width: 250px;
+            height:230px;
+            width: 230px;
             img{
-                height: 160px;
-                width: 160px;
+                height: 150px;
+                width: 150px;
             }
             p{
                 font-size: 26px;
@@ -60,18 +61,18 @@
     }
 }
 
-@media screen and (min-width: 3000px){
+@media screen and (min-width: 900px){
     .home{
         flex-direction: row;
         a{
-            height:800px;
-            width: 800px;
+            width: 60vh;
+            height: 60vh;
             img{
-                height: 600px;
-                width: 600px;
+                height: 85%;
+                width: 85%;
             }
             p{
-                font-size: 64px;
+                font-size: 6vh;
             }
         }
     }

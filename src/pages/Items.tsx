@@ -5,6 +5,8 @@ import api from "../services/api";
 import { Item } from "../types/itemTypes"
 import { format } from "date-fns"
 import themes from "../themes/items.module.scss"
+import { IoHomeSharp } from "react-icons/io5";
+// import { ContextItens } from "../App";
 import Header from "../components/Header";
 import { ContextIds } from "../App";
 
@@ -35,9 +37,14 @@ function Items() {
         navigate('/login/buscar')   
     }
 
+    function goHome() {
+        navigate('/')
+    }
+
     return (
         <>
             <header className={themes.header}>
+                <a onClick={goHome}><IoHomeSharp /></a>
                 <input type="text" value={busca} onChange={(e) => {setBusca(e.target.value)}} className={themes.search}/>
             </header>
             <main className={themes.itemMain}>
