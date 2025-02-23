@@ -1,10 +1,19 @@
 import React from 'react'
+import { useEffect, useContext } from 'react'
 import imagemEncontrar from '../assets/home/EncontrarItem.png'
 import imagemGuardar from '../assets/home/GuardarItem.png'
 import themes from '../themes/home.module.scss'
 import Header from '../components/Header'
+import { ContextIds } from "../App";
 
 function Home(){
+    let contextIds = useContext(ContextIds);
+    useEffect(() => {
+        contextIds["setItemId"]("")
+        contextIds["setUserId"]("")
+        contextIds["setType"]("")
+    }, []);
+
     return (
         <>
             <Header titulo='S.A.L.E.T.A.'/>
