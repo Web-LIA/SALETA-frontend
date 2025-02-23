@@ -79,7 +79,7 @@ const Login:React.FC<sessionProps> = ({tipo})=>{
                         
                         <button type="submit">Entrar</button>
                     </form>
-                    <a href="/login/visitante">Visitante?</a>
+                    {/* <a href="/login/visitante">Visitante?</a> */}
                 </main>
             }/>
 
