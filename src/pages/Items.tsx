@@ -27,9 +27,10 @@ function Items() {
     const [busca,setBusca] = useState("")
     const lowerBusca = busca.toLowerCase()
     const itemListFiltered = itemList.filter((item) => 
-        item.title.toLowerCase().includes(busca.toLowerCase()) ||
+        (item.title.toLowerCase().includes(busca.toLowerCase()) ||
         item.color.toLowerCase().includes(busca.toLowerCase()) ||
-        item.description.toLowerCase().includes(busca.toLowerCase())
+        item.description.toLowerCase().includes(busca.toLowerCase())) &&
+        !item.found
     ) 
 
     function start_session(id:string) {
@@ -48,7 +49,7 @@ function Items() {
                 <input type="text" value={busca} onChange={(e) => {setBusca(e.target.value)}} className={themes.search}/>
             </header>
             <main className={themes.itemMain}>
-                {itemListFiltered.filter(item => !item.found).map(item => (
+                {itemListFiltered.map(item => (
                     <div className={themes.itemCard}>
                         <div className={themes.itemInfo}>
                             <img src={item.photo} alt={item.title} />
