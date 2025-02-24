@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import ReactModal from "react-modal";
 import api from "../services/api";
 import { Item } from "../types/itemTypes"
 import { format } from "date-fns"
@@ -8,7 +9,9 @@ import themes from "../themes/items.module.scss"
 import { IoHomeSharp } from "react-icons/io5";
 // import { ContextItens } from "../App";
 import Header from "../components/Header";
+import ItemModal from "../components/modal/ItemModal";
 import { ContextIds } from "../App";
+import { DateTimezoneSetter } from "date-fns/parse/_lib/Setter";
 
 function Items() {
     let contextItem = useContext(ContextIds);
@@ -42,8 +45,21 @@ function Items() {
         navigate('/')
     }
 
+
+    const [showModal,setShowModal] = useState(false)
+    const [modalItem,setModalItem] = useState<Item>(itemList[0]);
+    function handleOpenModal (item:Item) {
+        setModalItem(item)
+        setShowModal(true)
+    }
+      
+    function handleCloseModal () {
+        setShowModal(false)
+    }
+
     return (
         <>
+            <ItemModal item={modalItem} show={showModal} setShow={setShowModal}/>
             <header className={themes.header}>
                 <a onClick={goHome}><IoHomeSharp /></a>
                 <input type="text" value={busca} onChange={(e) => {setBusca(e.target.value)}} className={themes.search}/>
@@ -63,7 +79,8 @@ function Items() {
                                 <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
                             </div>
                         </div>
-                        <button onClick={() => {start_session(item._id)}} className={themes.itemButton}>Recuperar Item</button>
+                        {/* <button onClick={() => {start_session(item._id)}} className={themes.itemButton}>Recuperar Item</button> */}
+                        <button onClick={() => handleOpenModal(item)} className={themes.itemButton}>Recuperar Item</button>
                     </div>
                 ))}
             </main>

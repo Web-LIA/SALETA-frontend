@@ -1,3 +1,6 @@
+.modalBody{
+    // display: none;
+}
 .header{
     display: flex;
     height: 100px;
@@ -162,7 +165,7 @@
     }
 }
 
-@media screen and (min-width: 900px){
+@media screen and (min-width: 1500px){
     .header{
         .search{
             width: 50%;
