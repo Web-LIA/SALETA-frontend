@@ -3,15 +3,17 @@ import { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import api from "../services/api";
 import { Item } from "../types/itemTypes";
-import themes from "../themes/new-item-form.module.scss";
+import themes from "../themes/items.module.scss"; // fazer css
 import Header from "../components/Header";
 import { ContextIds } from "../App";
 import sessionProps from "../types/loginProps";
+import { format } from "date-fns";
 
 const Session:React.FC<sessionProps> = ({tipo}) => {
     let closed:boolean = true;
     let navigate = useNavigate()
     let contextIds = useContext(ContextIds);
+    const [item, setItem] = useState<Item>();
 
     async function abrir_porta(){
         console.log("abriu porta")
@@ -36,10 +38,17 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
             return response.data
         }
     }
+
+    async function getItem() {
+        const response = await api.get(`/itens/${contextIds["itemId"]}`);
+        if (response.data) {
+            const apiItem: Item = response.data;
+            setItem(apiItem);
+        }
+    }
     
     useEffect(() => {
-        if (closed) abrir_porta();
-        closed = false;
+        getItem();
     }, []);
 
     async function end_session() {
@@ -52,7 +61,35 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     
     return (
         <>
-            <Header titulo='SESSÃO EM ANDAMENTO'/>
+            <Header titulo='SESSÃO'/>
+            { (contextIds["itemId"]=="buscar") ? (
+                <div>
+                    Entre na S.A.L.E.T.A. e recupere:
+                </div>
+            ) : (
+                <div>
+                    Entre na S.A.L.E.T.A. e deposite:
+                </div>
+            )}
+            { item ? (
+                <div className={themes.itemCard}>
+                <div className={themes.itemInfo}>
+                    <img src={item.photo} alt={item.title} />
+                    <div className={themes.itemContent}>
+                        <h3>{item.title}</h3>
+                        <p className={themes.itemDesc}>{item.description}</p>
+                        <div className={themes.itemFeats}>
+                            <p>Cor: {item.color}</p>
+                            <p>Tam: {item.size}</p>
+                        </div>
+                        <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
+                    </div>
+                </div>
+                </div>
+            ) : (
+                <><p>Carregando Informações do Item</p></>
+            )}
+            <button onClick={abrir_porta}>Abrir Porta</button>
             <button onClick={end_session}>Encerrar Sessão</button>
         </>
     )
