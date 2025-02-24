@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Visitante from './pages/Visitante';
 import Door from './pages/Door';
 import Session from './pages/Session';
+import Admin from './pages/Admin';
 
 export const ContextIds = React.createContext<any>({
   itemId:'',setItemId: () => {},
@@ -37,7 +38,7 @@ function App() {
             <Route path='/sessao/buscar' element={<Session tipo='buscar'/>}/>
             <Route path='/sessao/guardar' element={<Session tipo = 'guardar'/>}/>
           
-          
+            <Route path = '/admin' element = {<Admin/>}/>
         </Routes>
         </ContextIds.Provider>
       </div>
