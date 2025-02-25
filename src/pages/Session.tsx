@@ -17,19 +17,23 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     const [openDoorClicked, setOpenDoorClicked] = useState<boolean>(false);
 
     async function abrir_porta(){
-        setOpenDoorClicked(true);
         if (contextIds["type"]!="" && contextIds["userId"]!="" && contextIds["itemId"]!="") {
             console.log("abriu porta")
             const response = await api.post('/porta/abrir', {})
-            await api.post(`/sessao/${contextIds["type"]}/${contextIds["userId"]}/${contextIds["itemId"]}` );
+            if (!openDoorClicked) {
+                await api.post(`/sessao/${contextIds["type"]}/${contextIds["userId"]}/${contextIds["itemId"]}` );
+            }
+            setOpenDoorClicked(true);
             if(response.data.error){
                 alert("NÃO CONSEGUI ABRIR A PORTA");
                 return false;
             }else{
-                alert("Tranca Liberada, deposite/obtenha o item e volte para encerrar a sessão");
+                if(tipo=="buscar") alert("Tranca Liberada, recupere o item e volte para encerrar a sessão");
+                if(tipo=="guardar") alert("Tranca Liberada, deposite o item e volte para encerrar a sessão");
                 return response.data
             }
         }
+        setOpenDoorClicked(true);
     }
     async function fechar_porta() {
         if (contextIds["type"]!="" && contextIds["userId"]!="" && contextIds["itemId"]!="") {
