@@ -16,7 +16,7 @@ function Home(){
 
     return (
         <>
-            <Header titulo='S.A.L.E.T.A.'/>
+            <Header titulo='S.A.L.E.T.A.' hideHome={true}/>
             <div className={themes.home}>
                 <img src="" alt="?" className={themes.sobre}/>
                 <a href="/itens" className={themes.encontrar}>

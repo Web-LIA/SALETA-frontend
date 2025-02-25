@@ -73,7 +73,7 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     
     return (
         <>
-            <Header titulo='SESSÃO'/>
+            <Header titulo='SESSÃO' hideHome={true}/>
             <div className={themes.sessionMain}>
             <div className={themes.sessionText}>
                 { (tipo=="buscar") ? 
