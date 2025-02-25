@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import api from "../services/api";
 import { Item } from "../types/itemTypes";
 import themes from "../themes/session.module.scss";
+import themesHeader from "../themes/header.module.scss";
 import Header from "../components/Header";
 import { ContextIds } from "../App";
 import sessionProps from "../types/loginProps";
@@ -13,8 +14,10 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     let navigate = useNavigate()
     let contextIds = useContext(ContextIds);
     const [item, setItem] = useState<Item>();
+    const [openDoorClicked, setOpenDoorClicked] = useState<boolean>(false);
 
     async function abrir_porta(){
+        setOpenDoorClicked(true);
         if (contextIds["type"]!="" && contextIds["userId"]!="" && contextIds["itemId"]!="") {
             console.log("abriu porta")
             const response = await api.post('/porta/abrir', {})
@@ -65,7 +68,7 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
 
     async function end_session() {
         await fechar_porta();
-        if(tipo == "buscar") {
+        if(tipo == "buscar" && contextIds["itemId"]!="") {
             await api.post(`/itens/found/${contextIds["itemId"]}`).then( contextIds["setItemId"](""));
         } 
         navigate('/');
@@ -73,8 +76,13 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     
     return (
         <>
-            <Header titulo='SESSÃO'/>
+            <header className={themesHeader.header}>
+                <p>S.A.L.E.T.A.</p>
+            </header>
             <div className={themes.sessionMain}>
+            {/* <div className={themes.sessionText}>
+                Sua sessão na S.A.L.E.T.A. começou!
+            </div> */}
             <div className={themes.sessionText}>
                 { (tipo=="buscar") ? 
                     "Entre na S.A.L.E.T.A. e recupere:"  
@@ -100,8 +108,15 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
             ) : (
                 <><p>Carregando Informações do Item</p></>
             )}
+            <div className={themes.sessionText}>
+                Retorne após {(tipo=="buscar") ? "recuperar": "depositar"} o item
+            </div>
             <button onClick={abrir_porta} className={themes.buttonOpen}>Abrir Porta</button>
-            <button onClick={end_session} className={themes.buttonClose}>Encerrar Sessão</button>
+            { openDoorClicked ?
+                <button onClick={end_session} className={themes.buttonClose}>Encerrar Sessão</button>
+            : 
+                <button className={themes.buttonUseless}>Encerrar Sessão</button>
+            }
             </div>
         </>
     )

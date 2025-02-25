@@ -102,7 +102,7 @@
             font-size: 10px;
             width: 90vw;
             box-shadow: 5px 5px 5px #00000060;
-            margin-bottom: 30vh;
+            // margin-bottom: 30vh;
             .itemInfo{
                 .itemContent{
                     padding-right: 15px;
@@ -138,9 +138,14 @@
         }
         .buttonOpen{
             background-color: #2F9E41;
+            margin-top: 15vh
+            ;
         }
         .buttonClose{
             background-color: #CD191E;
+        }
+        .buttonUseless{
+            background-color: #cd191f42;
         }
     }
 }
