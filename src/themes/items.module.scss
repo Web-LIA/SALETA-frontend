@@ -53,7 +53,7 @@
         .itemInfo{
             padding: 0 2% 0 0;
             display: flex;
-            height: 80%;
+            height: auto;
             img{
                 width: 30%;
                 aspect-ratio: 1/1;
@@ -162,10 +162,10 @@
     }
 }
 
-@media screen and (min-width: 3000px){
+@media screen and (min-width: 900px){
     .header{
         .search{
-            width: 1400px;
+            width: 50%;
             border:0.2vh solid black;
             border-radius: 50px;
             background-size: 24px;
