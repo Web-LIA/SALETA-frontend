@@ -58,16 +58,16 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
         }
     }
 
-    async function getItemTeste() {
-        const response = await api.get(`/itens/677da9ebdad4573d023fa1fd`);
-        if (response.data) {
-            const apiItem: Item = response.data;
-            setItem(apiItem);
-        }
-    }
+    // async function getItemTeste() {
+    //     const response = await api.get(`/itens/677da9ebdad4573d023fa1fd`);
+    //     if (response.data) {
+    //         const apiItem: Item = response.data;
+    //         setItem(apiItem);
+    //     }
+    // }
     
     useEffect(() => {
-        getItemTeste();
+        getItem();
     }, []);
 
     async function end_session() {
