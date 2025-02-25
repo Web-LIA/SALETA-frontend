@@ -13,7 +13,7 @@
     border-radius: 4px;
     outline: none;
     padding: 20px;
-    width: auto;
+    width: calc(90vw - 40px);
     height: auto;
     place-self: center;
     font-family: "Open Sans";
@@ -30,7 +30,7 @@
             border-radius: 15px;
         }
         .modalItemContent{
-            width: 200px;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -57,7 +57,7 @@
             width: auto;
             padding: 8px 5px 8px 5px;
             font-family: "Open Sans";
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             color: white;
             border-radius: 10px;
