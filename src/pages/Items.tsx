@@ -52,10 +52,6 @@ function Items() {
         setModalItem(item)
         setShowModal(true)
     }
-      
-    function handleCloseModal () {
-        setShowModal(false)
-    }
 
     return (
         <>
