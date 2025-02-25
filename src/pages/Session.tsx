@@ -10,7 +10,6 @@ import sessionProps from "../types/loginProps";
 import { format } from "date-fns";
 
 const Session:React.FC<sessionProps> = ({tipo}) => {
-    let closed:boolean = true;
     let navigate = useNavigate()
     let contextIds = useContext(ContextIds);
     const [item, setItem] = useState<Item>();
@@ -48,13 +47,13 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
         }
     }
 
-    async function getItemTeste() {
-        const response = await api.get(`/itens/677da9ebdad4573d023fa1fd`);
-        if (response.data) {
-            const apiItem: Item = response.data;
-            setItem(apiItem);
-        }
-    }
+    // async function getItemTeste() {
+    //     const response = await api.get(`/itens/677da9ebdad4573d023fa1fd`);
+    //     if (response.data) {
+    //         const apiItem: Item = response.data;
+    //         setItem(apiItem);
+    //     }
+    // }
     
     useEffect(() => {
         getItem();
@@ -73,7 +72,7 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
             <Header titulo='SESSÃO'/>
             <div className={themes.sessionMain}>
             <div className={themes.sessionText}>
-                { (contextIds["tipo"]=="buscar") ? 
+                { (contextIds["type"]=="buscar") ? 
                     "Entre na S.A.L.E.T.A. e recupere:"  
                 : 
                     "Entre na S.A.L.E.T.A. e deposite:"
