@@ -67,12 +67,16 @@ function Items() {
                             <img src={item.photo} alt={item.title} />
                             <div className={themes.itemContent}>
                                 <h3>{item.title}</h3>
-                                <p className={themes.itemDesc}>{item.description}</p>
-                                <div className={themes.itemFeats}>
-                                    <p>Cor: {item.color}</p>
-                                    <p>Tam: {item.size}</p>
+                                <div className={themes.itemMisc}>
+                                    <p className={themes.itemDesc}>{item.description}</p>
+                                    <div>
+                                        <div className={themes.itemFeats}>
+                                            <p>Cor: {item.color}</p>
+                                            <p>Tam: {item.size}</p>
+                                        </div>
+                                        <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
+                                    </div>
                                 </div>
-                                <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
                             </div>
                         </div>
                         {/* <button onClick={() => {start_session(item._id)}} className={themes.itemButton}>Recuperar Item</button> */}
