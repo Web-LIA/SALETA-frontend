@@ -15,25 +15,29 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     const [item, setItem] = useState<Item>();
 
     async function abrir_porta(){
-        console.log("abriu porta")
-        const response = await api.post('/porta/abrir', {})
-        await api.post(`/sessao/${contextIds["type"]}/${contextIds["userId"]}/${contextIds["itemId"]}` );
-        if(response.data.error){
-            alert("NÃO CONSEGUI ABRIR A PORTA");
-            return false;
-        }else{
-            alert("Tranca Liberada, deposite/obtenha o item e volte para encerrar a sessão");
-            return response.data
+        if (contextIds["type"]!="" && contextIds["userId"]!="" && contextIds["itemId"]!="") {
+            console.log("abriu porta")
+            const response = await api.post('/porta/abrir', {})
+            await api.post(`/sessao/${contextIds["type"]}/${contextIds["userId"]}/${contextIds["itemId"]}` );
+            if(response.data.error){
+                alert("NÃO CONSEGUI ABRIR A PORTA");
+                return false;
+            }else{
+                alert("Tranca Liberada, deposite/obtenha o item e volte para encerrar a sessão");
+                return response.data
+            }
         }
     }
     async function fechar_porta() {
-        const response = await api.post('/porta/fechar', {})
-        if(response.data.error){
-            alert("NÃO CONSEGUI FECHAR PORTA");
-            return false;
-        }else{
-            alert("Sessão Encerrada, favor feche a porta");
-            return response.data
+        if (contextIds["type"]!="" && contextIds["userId"]!="" && contextIds["itemId"]!="") {
+            const response = await api.post('/porta/fechar', {})
+            if(response.data.error){
+                alert("NÃO CONSEGUI FECHAR PORTA");
+                return false;
+            }else{
+                alert("Sessão Encerrada, favor feche a porta");
+                return response.data
+            }
         }
     }
 
@@ -72,7 +76,7 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
             <Header titulo='SESSÃO'/>
             <div className={themes.sessionMain}>
             <div className={themes.sessionText}>
-                { (contextIds["type"]=="buscar") ? 
+                { (tipo=="buscar") ? 
                     "Entre na S.A.L.E.T.A. e recupere:"  
                 : 
                     "Entre na S.A.L.E.T.A. e deposite:"
