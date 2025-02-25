@@ -38,7 +38,7 @@ function App() {
             <Route path='/sessao/buscar' element={<Session tipo='buscar'/>}/>
             <Route path='/sessao/guardar' element={<Session tipo = 'guardar'/>}/>
           
-            <Route path = '/admin' element = {<Admin/>}/>
+            <Route path = '/admin/*' element = {<Admin/>}/>
         </Routes>
         </ContextIds.Provider>
       </div>

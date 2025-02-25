@@ -5,11 +5,13 @@ import api from "../services/api";
 import { Item } from "../types/itemTypes"
 import { format } from "date-fns"
 import Header from "../components/Header";
-import themes from "../themes/items.module.scss"
+import themes from "../themes/admin.module.scss"
 import { IoHomeSharp } from "react-icons/io5";
 import { ContextIds } from "../App";
 import { Sessao } from "../types/adminTypes";
 import { sessionUser } from "../types/loginProps";
+import { Routes,Route } from "react-router";
+import AdminSession from "./AdminSession";
 function Admin() {
     const [sessaoList, setSessaoList] = useState<Sessao[]>([]);
     const [itemList, setItemList] = useState<Item[]>([]);
@@ -50,31 +52,46 @@ function Admin() {
     function abrirSessao(id:string){
         navigate(`/admin/${id}`);
     }
+
+    function mudarCor(type:string){
+        return type == "guardar" ? themes.guardar : themes.buscar;
+    }
     return (
         <>
-            <header className={themes.header}>
-                <input type="text" value={busca} onChange={(e) => {setBusca(e.target.value)}} className={themes.search} placeholder="Digite..."/>
-            </header>
-            <main className={themes.itemMain}>
-                {itemListFiltered.map(item => (
-                    <button onClick={() => {abrirSessao(item._id)}} className={themes.itemButton} key={item.key}>
-                        <div className={themes.itemCard}>
-                            <div className={themes.itemInfo}>
-                                <img src={item.itemImage} alt={item.itemName} />
-                                <div className={themes.itemContent}>
-                                    <h3>{item.itemName}</h3>
-                                    
-                                        <p>Aluno: {item.userName}</p>
-                                        <p>ItemId: {item.itemId}</p>
-                                        <p>Type: {item.type}</p>
-                                    <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </button>
-                
+            <Routes>
+                {itemListFiltered.map((item,index)=>(
+                     <Route path= {`/${item._id}`} element={<AdminSession item = {item} key = {index}/>}/>
                 ))}
-            </main>
+               
+                <Route path="/" element = {
+                <>
+                    <header className={themes.header}>
+                        <input type="text" value={busca} onChange={(e) => {setBusca(e.target.value)}} className={themes.search} placeholder=""/>
+                    </header>
+                    <main className={themes.itemMain}>
+                        {itemListFiltered.map(item => (
+                            <button onClick={() => {abrirSessao(item._id)}} className={themes.itemButton} key={item.key}>
+                                <div className={themes.itemCard + " " + mudarCor(item.type) }>
+                                    <div className={themes.itemInfo}>
+                                        <img src={item.itemImage} alt={item.itemName} />
+                                        <div className={themes.itemContent}>
+                                            <h3>{item.itemName}</h3>
+                                                <p>Type: {item.type.toLocaleUpperCase()}</p>
+                                                <p>Aluno: {item.userName}</p>
+                                                <p>ItemId: {item.itemId}</p>
+                                                
+                                            <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                        
+                        ))}
+                    </main>
+                </>
+                }/>
+            
+            </Routes>
         </>
     )
 }
