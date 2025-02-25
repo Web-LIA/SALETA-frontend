@@ -54,16 +54,16 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
         }
     }
 
-    // async function getItemTeste() {
-    //     const response = await api.get(`/itens/677da9ebdad4573d023fa1fd`);
-    //     if (response.data) {
-    //         const apiItem: Item = response.data;
-    //         setItem(apiItem);
-    //     }
-    // }
+    async function getItemTeste() {
+        const response = await api.get(`/itens/677da9ebdad4573d023fa1fd`);
+        if (response.data) {
+            const apiItem: Item = response.data;
+            setItem(apiItem);
+        }
+    }
     
     useEffect(() => {
-        getItem();
+        getItemTeste();
     }, []);
 
     async function end_session() {
@@ -76,7 +76,7 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     
     return (
         <>
-            <Header titulo='SESSÃO' hideHome={true}/>
+            <Header titulo='S.A.L.E.T.A.' hideHome={true}/>
             <div className={themes.sessionMain}>
             {/* <div className={themes.sessionText}>
                 Sua sessão na S.A.L.E.T.A. começou!
