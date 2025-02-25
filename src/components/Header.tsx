@@ -5,9 +5,10 @@ import themes from '../themes/header.module.scss'
 
 interface HeaderProps{
     titulo:string
+    hideHome?:boolean
 }
 
-function Header(props:HeaderProps){
+const Header:React.FC<HeaderProps> = ({titulo, hideHome = false}) => {
     let navigate = useNavigate();
 
     function goHome(){
@@ -16,8 +17,12 @@ function Header(props:HeaderProps){
 
     return (
         <header className={themes.header}>
+                {hideHome?
+                <></>
+                :
                 <a onClick={goHome}><IoHomeSharp /></a>
-                <p>{props.titulo}</p>
+                }
+                <p>{titulo}</p>
         </header>
     )
 }

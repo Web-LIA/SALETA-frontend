@@ -76,9 +76,7 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     
     return (
         <>
-            <header className={themesHeader.header}>
-                <p>S.A.L.E.T.A.</p>
-            </header>
+            <Header titulo='SESSÃO' hideHome={true}/>
             <div className={themes.sessionMain}>
             {/* <div className={themes.sessionText}>
                 Sua sessão na S.A.L.E.T.A. começou!
