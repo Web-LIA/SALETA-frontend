@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import api from "../services/api";
 import { Item } from "../types/itemTypes";
-import themes from "../themes/items.module.scss"; // fazer css
+import themes from "../themes/session.module.scss";
 import Header from "../components/Header";
 import { ContextIds } from "../App";
 import sessionProps from "../types/loginProps";
@@ -26,7 +26,6 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
             alert("Tranca Liberada, deposite/obtenha o item e volte para encerrar a sessão");
             return response.data
         }
-        
     }
     async function fechar_porta() {
         const response = await api.post('/porta/fechar', {})
@@ -40,7 +39,17 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     }
 
     async function getItem() {
-        const response = await api.get(`/itens/${contextIds["itemId"]}`);
+        if (contextIds["itemId"] != "") {
+            const response = await api.get(`/itens/${contextIds["itemId"]}`);
+            if (response.data) {
+                const apiItem: Item = response.data;
+                setItem(apiItem);
+            }
+        }
+    }
+
+    async function getItemTeste() {
+        const response = await api.get(`/itens/677da9ebdad4573d023fa1fd`);
         if (response.data) {
             const apiItem: Item = response.data;
             setItem(apiItem);
@@ -62,15 +71,14 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     return (
         <>
             <Header titulo='SESSÃO'/>
-            { (contextIds["itemId"]=="buscar") ? (
-                <div>
-                    Entre na S.A.L.E.T.A. e recupere:
-                </div>
-            ) : (
-                <div>
-                    Entre na S.A.L.E.T.A. e deposite:
-                </div>
-            )}
+            <div className={themes.sessionMain}>
+            <div className={themes.sessionText}>
+                { (contextIds["tipo"]=="buscar") ? 
+                    "Entre na S.A.L.E.T.A. e recupere:"  
+                : 
+                    "Entre na S.A.L.E.T.A. e deposite:"
+                }
+            </div>
             { item ? (
                 <div className={themes.itemCard}>
                 <div className={themes.itemInfo}>
@@ -89,8 +97,9 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
             ) : (
                 <><p>Carregando Informações do Item</p></>
             )}
-            <button onClick={abrir_porta}>Abrir Porta</button>
-            <button onClick={end_session}>Encerrar Sessão</button>
+            <button onClick={abrir_porta} className={themes.buttonOpen}>Abrir Porta</button>
+            <button onClick={end_session} className={themes.buttonClose}>Encerrar Sessão</button>
+            </div>
         </>
     )
 }
