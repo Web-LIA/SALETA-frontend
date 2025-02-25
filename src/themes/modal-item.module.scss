@@ -1,0 +1,74 @@
+.modalOverlay{
+    position: fixed;
+    inset: 0px;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.modalBody{
+    position: absolute;
+    inset: 40px;
+    border: 1px solid #000000;
+    background: #eeeeee;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    width: auto;
+    height: auto;
+    place-self: center;
+    font-family: "Open Sans";
+    h1{
+        font-size: 36px;
+        justify-self: center;
+    }
+    .modalItem{
+        display: flex;
+        img{
+            height: 120px;
+            aspect-ratio: 1/1;
+            margin-right: 3%;
+            border-radius: 3vw;
+        }
+        .modalItemContent{
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            h2{
+                font-size: 24px;
+                align-self: center;
+                overflow: auto;
+            }
+            .modalItemMisc{
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+        
+    }
+    .modalItemDesc{
+        font-size: 14px;
+        padding: 4px 0 4px 0;
+    }
+    .modalButtons{
+        display: flex;
+        justify-content: space-around;
+        button{
+            width: auto;
+            padding: 8px 5px 8px 5px;
+            font-family: "Open Sans";
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 10px;
+            border: none;
+        }
+        .buttonY{
+            background-color: #2f9d41;
+        }
+        .buttonN{
+            background-color: #CD191E;
+        }
+    }
+
+}

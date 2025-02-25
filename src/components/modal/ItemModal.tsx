@@ -5,7 +5,7 @@ import ReactModal from "react-modal";
 import { Item } from "../../types/itemTypes"
 import { format } from "date-fns"
 import { ContextIds } from "../../App";
-import themes from "../../themes/items.module.scss"
+import themes from "../../themes/modal-item.module.scss"
 
 interface itemModalProps{
     item:Item,
@@ -30,9 +30,28 @@ const ItemModal:React.FC<itemModalProps> = (props:itemModalProps) => {
             isOpen={props.show} 
             onRequestClose={handleCloseModal} 
             shouldCloseOnOverlayClick={true}
-            className={themes.itemMain}
+            className={themes.modalBody}
+            overlayClassName={themes.modalOverlay}
         >
-            <div className={themes.itemCard}>
+            <h1>É SEU ITEM?</h1>
+            <div className={themes.modalItem}>
+                <img src={props.item.photo} alt="item"/>
+                <div className={themes.modalItemContent}>
+                    <h2>{props.item.title}</h2>
+                    <div className={themes.modalItemMisc}>
+                        <p>Cor: {props.item.color}</p>
+                        <p>Tam: {props.item.size}</p>
+                        <p className={themes.date}>{format(props.item.date, 'dd/MM/yyyy HH:mm')}</p>
+                    </div>
+                </div>
+            </div>
+            <p className={themes.modalItemDesc}>{props.item.description}</p>
+            <div className={themes.modalButtons}>
+                <button className={themes.buttonY}>Sim, é meu item</button>
+                <button className={themes.buttonN}>Não, achar outro</button>
+            </div>
+
+            {/* <div className={themes.itemCard}>
                 <div className={themes.itemInfo}>
                     <img src={props.item.photo} alt={props.item.title} />
                     <div className={themes.itemContent}>
@@ -45,9 +64,10 @@ const ItemModal:React.FC<itemModalProps> = (props:itemModalProps) => {
                         <p className={themes.itemDate}>{format(props.item.date, 'dd/MM/yyyy HH:mm')}</p>
                     </div>
                 </div>
-                {/* <button onClick={() => {start_session(props.item._id)}} className={themes.itemButton}>Recuperar Item</button> */}
+                <button onClick={() => {start_session(props.item._id)}} className={themes.itemButton}>Recuperar Item</button>
                 <button onClick={handleCloseModal} className={themes.itemButton}>Recuperar Item</button>
-            </div>
+            </div> */}
+            
         </ReactModal> :
         <></>
         }
