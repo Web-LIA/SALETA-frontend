@@ -20,6 +20,7 @@ const AdminSession: React.FC<{item:Sessao, key:number}>= ({item}) => {
                             <p>Type: {item.type.toLocaleUpperCase()}</p>
                             <p>Aluno: {item.userName}</p>
                             <p>ItemId: {item.itemId}</p>
+                            <p>SessionId: {item._id}</p>
                             
                         <p className={themes.itemDate}>{format(item.date, 'dd/MM/yyyy HH:mm')}</p>
                     </div>

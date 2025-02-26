@@ -16,13 +16,16 @@ const Session:React.FC<sessionProps> = ({tipo}) => {
     const [item, setItem] = useState<Item>();
     const [openDoorClicked, setOpenDoorClicked] = useState<boolean>(false);
 
+    async function create_session(){
+        if (!openDoorClicked) {
+            await api.post(`/sessao/${contextIds["type"]}/${contextIds["userId"]}/${contextIds["itemId"]}` );
+        }
+    }
     async function abrir_porta(){
         if (contextIds["type"]!="" && contextIds["userId"]!="" && contextIds["itemId"]!="") {
             console.log("abriu porta")
             const response = await api.post('/porta/abrir', {})
-            if (!openDoorClicked) {
-                await api.post(`/sessao/${contextIds["type"]}/${contextIds["userId"]}/${contextIds["itemId"]}` );
-            }
+            await create_session();
             setOpenDoorClicked(true);
             if(response.data.error){
                 alert("NÃO CONSEGUI ABRIR A PORTA");
