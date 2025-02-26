@@ -6,6 +6,7 @@ import { Item } from "../types/itemTypes";
 import themes from "../themes/new-item-form.module.scss";
 import WebCamPhoto from "../components/form/WebCamPhoto"
 import Header from "../components/Header";
+import NewItemModal from "../components/modal/NewItemModal";
 import { ContextIds } from "../App";
 
 function NewItemForm() {
@@ -16,23 +17,47 @@ function NewItemForm() {
     const [description, setDescription] = useState<string>("");
     let navigate = useNavigate();
     const contextIds = useContext(ContextIds);
+    interface itemTemplate{
+            _id?: string;
+            title: string;
+            color: string;
+            size: string;
+            description: string;
+            photo: string;
+            date?: Date;
+    }
 
     async function postItem(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        let resposta:any = await api.post('/itens', {
-            title,
-            color,
-            size,
-            description,
-            photo
-        });
-        contextIds["setItemId"](resposta.data._id);
-        navigate('/sessao/guardar')
+        let itemtest:itemTemplate = {
+            title : title,
+            color : color,
+            size : size,
+            description : description,
+            photo : photo,
+        }
+        setModalItem(itemtest)
+        setShowModal(true)
+    }
+
+    const [showModal,setShowModal] = useState(false)
+    const [modalItem,setModalItem] = useState<itemTemplate>(
+    {
+        title : title,
+        color : color,
+        size : size,
+        description : description,
+        photo : photo,
+    }
+    );
+    function handleOpenModal (item:Item) {
+        setShowModal(true)
     }
 
     return (
         <>
             <Header titulo='NOVO ITEM'/>
+            <NewItemModal _id="" title={modalItem.title} color={modalItem.color} size={modalItem.size} description={modalItem.description} photo={modalItem.photo} show={showModal} setShow={setShowModal} tipo="guardar"/>
             <div className={themes.itemForm}>
                 
                 
