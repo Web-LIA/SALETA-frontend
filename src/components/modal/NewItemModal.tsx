@@ -20,7 +20,7 @@ interface itemModalProps{
     tipo:"buscar"|"guardar";
 }
 
-const newItemModal:React.FC<itemModalProps> = (modal) => {
+const NewItemModal:React.FC<itemModalProps> = (modal) => {
 
     let contextItem = useContext(ContextIds);
     let navigate = useNavigate();
@@ -80,4 +80,4 @@ const newItemModal:React.FC<itemModalProps> = (modal) => {
     )
 }
 
-export default newItemModal
+export default NewItemModal
