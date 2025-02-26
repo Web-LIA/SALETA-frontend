@@ -27,17 +27,12 @@ const NewItemModal:React.FC<itemModalProps> = (modal) => {
     const contextIds = useContext(ContextIds);
     
     async function create_item(item:itemModalProps){
-        let title = item.title;
-        let color = item.color;
-        let size = item.size;
-        let description = item.description;
-        let photo = item.photo;
         let resposta:any = await api.post('/itens', {
-            title,
-            color,
-            size,
-            description,
-            photo
+            title: item.title,
+            color: item.color,
+            size: item.size,
+            description: item.description,
+            photo: item.photo
         });
         contextIds["setItemId"](resposta.data._id);
         navigate('/sessao/guardar')
