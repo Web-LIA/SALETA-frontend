@@ -24,13 +24,14 @@ const Login:React.FC<sessionProps> = ({tipo})=>{
             login,
             password
         })
-        contextIds["setUserId"](response.data[0]._id);
+        
+        
         if(response.data.error){
             alert(response.data.error);
             return false;
         }else{
             alert("Logado com sucesso!");
-            
+            contextIds["setUserId"](response.data[0]._id);
             return response.data
         }
         

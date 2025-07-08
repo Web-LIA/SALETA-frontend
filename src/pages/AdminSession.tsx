@@ -1,6 +1,8 @@
 import { Sessao } from "../types/adminTypes";
 import themes from "../themes/admin.module.scss"
 import { format } from "date-fns"
+import api from "../services/api";
+import { API_URL } from "../services/api";
 const AdminSession: React.FC<{item:Sessao, key:number}>= ({item}) => {
     function mudarCor(type:string){
         return type == "guardar" ? themes.guardar : themes.buscar;
@@ -11,7 +13,7 @@ const AdminSession: React.FC<{item:Sessao, key:number}>= ({item}) => {
             <h1>SESSÃO</h1>
         </header>
         <main className={themes.itemMain}>
-        <button className={themes.itemButton}>
+        <div className={themes.itemButton}>
             <div className={themes.itemCard + " " + mudarCor(item.type) }>
                 <div className={themes.itemInfo}>
                     <img src={item.itemImage} alt={item.itemName} />
@@ -26,16 +28,16 @@ const AdminSession: React.FC<{item:Sessao, key:number}>= ({item}) => {
                     </div>
                 </div>
             </div>
-        </button>
+        </div>
         </main>
         <div className={themes.itemCam}>
-            <ul>
-                {item.photos.map((photo,index)=>
-                <li>
-                    <img src={photo} alt={`Foto ${index + 1} Sessão: ${item._id}`} />
-                    <p>{index+1}</p>
-                </li>)}
-            </ul>
+            <div>
+                <video controls >
+                    <source src={`${API_URL}/video/${item._id}`} type="video/mp4" />
+                    Seu navegador não suporta vídeo HTML5.
+                </video>
+            </div>
+            
         </div>
        
 
